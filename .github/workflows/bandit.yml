@@ -12,13 +12,9 @@ jobs:
   bandit:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: jpetrucciani/bandit-check@master
         with:
-          fetch-depth: 0 #get fuller history
-      - name: Run Bandit Report
-        uses: libertyy/py3-bandit-check@v2
-      - name: Save Bandit txt Report
-        if: ${{ always() }}
-        uses: actions/upload-artifact@v2
+          path: '.'
+      - uses: jpetrucciani/bandit-check@master
         with:
-          path: ${{ RUNNER.temp }}/_github_home/bandit_report.out
+          bandit_flags: '-lll -o output.json -f json'
