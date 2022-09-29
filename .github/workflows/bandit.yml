@@ -4,17 +4,17 @@ on:
   push:
     branches:
       - master #dev, release, etc.
-  release:
-    types:
-      - created
-
 jobs:
   bandit:
     runs-on: ubuntu-latest
     steps:
-      - uses: jpetrucciani/bandit-check@master
+      - uses: actions/checkout@v2
         with:
-          path: '.'
-      - uses: jpetrucciani/bandit-check@master
+          fetch-depth: 0 #get fuller history
+      - name: Run Bandit Report
+        uses: libertyy/py3-bandit-check@v2
+      - name: Save Bandit txt Report
+        if: ${{ always() }}
+        uses: actions/upload-artifact@v2
         with:
-          bandit_flags: '-lll -o output.json -f json'
+          path: ${{ RUNNER.temp }}/_github_home/bandit_report.out
