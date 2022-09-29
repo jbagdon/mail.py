@@ -6,12 +6,10 @@ on:
       - master
 jobs:
   pytest:
-    runs-on: python:3.9-slim
+    runs-on: python:3.9-alpine
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-python@v4
-        with:
-          python-version: '3.9'
       - name: Install bandit
         run: pip install bandit
       - name: Run Bandit
