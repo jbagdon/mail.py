@@ -14,5 +14,5 @@ jobs:
           python-version: '3.9'
       - name: Install bandit
         run: pip install bandit
-      - name: Run Banddit
-        run: bandit -r -x test ..
+      - name: Run Bandit
+        run: bandit -r -x test .
