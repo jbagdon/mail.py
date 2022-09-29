@@ -6,7 +6,7 @@ on:
       - master
 jobs:
   pytest:
-    runs-on: python:3.9-alpine
+    runs-on: python:latest
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-python@v4
